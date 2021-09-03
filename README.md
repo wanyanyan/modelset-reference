@@ -141,7 +141,7 @@
 
 *只有虚拟模型需要该字段*
 
-引用的实体模型的id
+引用的实体模型或模型子集的id
 
 **location**
 
@@ -158,3 +158,138 @@
 **properties**
 
 模型挂接的外部属性
+
+## 一个完整的配置文件示例
+
+```json
+{
+  "name": "汇博苑-1号楼",
+  "bbox": {
+    "min": {
+      "x": -10,
+      "y": 0,
+      "z": 0
+    },
+    "max": {
+      "x": 50,
+      "y": 150,
+      "z": 90
+    }
+  },
+  "origin": [114.3241, 30.8652],
+  "des": "这是一个位于华中科技大学东边的高档小区，建于2015年，总建筑面积2.34万㎡。",
+  "metadata": {},
+  "models": [
+    {
+      "id": "f1",
+      "type": "group",
+      "name": "1楼",
+      "properties": {
+        "floorHeight": 3
+      },
+      "models": [
+        {
+          "id": "f11",
+          "type": "model",
+          "name": "架空层",
+          "format": "gltf",
+          "model": "HBY_1D_01F_LOD3_001.glb",
+          "properties": {
+            "单元号": "1",
+            "类型": "公共空间",
+            "房号": "架空"
+          }
+        },
+        {
+          "id": "f12",
+          "type": "model",
+          "name": "地下室用管井",
+          "format": "gltf",
+          "model": "HBY_1D_01F_LOD3_003.glb",
+          "properties": {
+            "单元号": "1",
+            "类型": "公共空间",
+            "房号": "管井"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f2",
+      "type": "group",
+      "name": "2楼",
+      "properties": {
+        "floorHeight": 3
+      },
+      "models": [
+        {
+          "id": "f21",
+          "type": "model",
+          "name": "1号房",
+          "format": "gltf",
+          "model": "HBY_1D_02F_LOD3_001.glb",
+          "properties": {
+            "单元号": "1",
+            "类型": "房间",
+            "房号": "1"
+          }
+        },
+        {
+          "id": "f22",
+          "type": "model",
+          "name": "2号房",
+          "format": "gltf",
+          "model": "HBY_1D_02F_LOD3_003.glb",
+          "properties": {
+            "单元号": "1",
+            "类型": "房间",
+            "房号": "2"
+          }
+        },
+        {
+          "id": "f23",
+          "type": "model",
+          "name": "电梯间",
+          "format": "gltf",
+          "model": "HBY_1D_02F_LOD3_002.glb",
+          "properties": {
+            "单元号": "1",
+            "类型": "公共空间",
+            "房号": "电梯间"
+          }
+        }
+      ]
+    },
+    {
+      "id": "f3",
+      "type": "virtual_model",
+      "name": "3楼",
+      "ref": "f2",
+      "location": [0, 9, 0],
+      "properties": {
+        "floorHeight": 3
+      }
+    },
+    {
+      "id": "f4",
+      "type": "virtual_model",
+      "name": "4楼",
+      "ref": "f2",
+      "location": [0, 12, 0],
+      "properties": {
+        "floorHeight": 3
+      }
+    },
+    {
+      "id": "ff",
+      "type": "model",
+      "name": "顶楼",
+      "format": "gltf",
+      "model": "HBY_1D_31F_LOD3_001.glb",
+      "properties": {
+        "floorHeight": 2
+      }
+    }
+  ]
+}
+```
